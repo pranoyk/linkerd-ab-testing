@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: v1-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: v1-echo
+  template:
+    metadata:
+      labels:
+        app: v1-echo
+    spec:
+      containers:
+      - name: v1-echo-container
+        image: pranoyk/echo_v1:1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8090
